@@ -1,11 +1,12 @@
 sudo: required
+language: generic
 services:
   - docker
 before_install:
   - docker build -t sriniv23/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run sriniv23/react-test npm test -- --coverage
+  - docker run -e CI=true sriniv23/react-test npm test
 
 after_success:
   - docker build -t sriniv23/multi-client ./client
