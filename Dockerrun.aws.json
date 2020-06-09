@@ -18,7 +18,7 @@
     {
       "name": "worker",
       "image": "sriniv23/multi-worker",
-      "hostname": "api",
+      "hostname": "worker",
       "essential": false,
       "memory": 128
     },
@@ -27,11 +27,16 @@
       "image": "sriniv23/multi-nginx",
       "hostname": "nginx",
       "essential": true,
-      "portMappings": [{
+      "portMappings": [
+        {
           "hostPort": 80,
           "containerPort": 80
-      }],
-      "links": ["client","server"],
+        }
+      ],
+      "links": [
+        "client",
+        "server"
+      ],
       "memory": 128
     }
   ]
